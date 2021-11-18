@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">RaakApplication</string>
+    <string name="menu_option_one">Breakfast</string>
+    <string name="menu_option_two">Lunch</string>
+    <string name="menu_option_three">Dinner</string>
+
+    <string name="bookNow">Book this Date</string>
+    <string name="number_of_seats">Number of seats</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="surname">Surname</string>
+    <string name="first_name">First Name</string>
+
+    <string name="user_prompt">Choose your Type</string>
+    <string name="booking_details">Booking Details</string>
+    <string name="book_a_date">Book a Date</string>
+
+
+</resources>
