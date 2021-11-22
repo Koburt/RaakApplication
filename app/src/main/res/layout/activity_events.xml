@@ -29,6 +29,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <TextView
+            android:id="@+id/events"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="Events Details Displayed HERE"
