@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/purple_700"
+    tools:context=".EventBookingDetailAcvtivity">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="129dp"
+        android:layout_height="84dp"
+        android:src="@drawable/whitelogo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.054" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent=".78"
+        app:layout_constraintStart_toStartOf="parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/view_bg"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent=".78"
+            app:layout_constraintStart_toStartOf="parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Event Booking"
+                android:textAlignment="center"
+                android:layout_marginTop="10dp"
+                android:textSize="30sp"
+                android:fontFamily="@font/righteous_regular"
+                android:textColor="@color/purple_700"/>
+
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="email"
+                android:elevation="5dp"
+                android:drawableStart="@drawable/ic_baseline_perm_identity_24"
+                android:drawableTint="@color/purple_700"
+                android:drawablePadding="5dp"
+                android:fontFamily="@font/righteous_regular"
+                android:layout_margin="14dp"
+                android:background="@drawable/text_case"
+                android:textColor="@color/purple_700"
+                android:paddingStart="5dp" />
+
+            <EditText
+                android:id="@+id/userName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/first_name"
+                android:elevation="5dp"
+                android:drawableStart="@drawable/ic_baseline_perm_identity_24"
+                android:drawableTint="@color/purple_700"
+                android:drawablePadding="5dp"
+                android:fontFamily="@font/righteous_regular"
+                android:layout_margin="14dp"
+                android:background="@drawable/text_case"
+                android:textColor="@color/purple_700"
+                android:paddingStart="5dp" />
+
+            <EditText
+                android:id="@+id/userSurname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/surname"
+                android:elevation="5dp"
+                android:drawableStart="@drawable/ic_baseline_person_24"
+                android:drawableTint="@color/purple_700"
+                android:drawablePadding="5dp"
+                android:fontFamily="@font/righteous_regular"
+                android:layout_margin="14dp"
+                android:background="@drawable/text_case"
+                android:textColor="@color/purple_700"
+                android:paddingStart="5dp"/>
+
+            <EditText
+                android:id="@+id/userContact"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/phone_number"
+                android:elevation="5dp"
+                android:drawableStart="@drawable/ic_baseline_phone_24"
+                android:drawableTint="@color/purple_700"
+                android:drawablePadding="5dp"
+                android:fontFamily="@font/righteous_regular"
+                android:layout_margin="14dp"
+                android:ems="10"
+                android:inputType="phone"
+                android:background="@drawable/text_case"
+                android:textColor="@color/purple_700"
+                android:paddingStart="5dp"/>
+
+            <EditText
+                android:id="@+id/userNumSeats"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/number_of_seats"
+                android:elevation="5dp"
+                android:drawableStart="@drawable/ic_baseline_people_outline_24"
+                android:drawableTint="@color/purple_700"
+                android:drawablePadding="5dp"
+                android:fontFamily="@font/righteous_regular"
+                android:layout_margin="14dp"
+                android:ems="10"
+                android:inputType="number"
+                android:background="@drawable/text_case"
+                android:textColor="@color/purple_700"
+                android:paddingStart="5dp"/>
+
+
+            <Button
+                android:id="@+id/booking"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/book_a_date"
+                android:layout_marginStart="55sp"
+                android:layout_marginEnd="55sp"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/rounded_corner"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

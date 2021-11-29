@@ -5,12 +5,10 @@
     android:layout_height="match_parent"
     tools:context=".BreakfastFragment">
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Breakfast Menu Frag"
-        android:textColor="@color/teal_700"
-        android:textSize="20dp"
+        android:id="@+id/recyclerviewBreakfast"
         android:fontFamily="@font/righteous_regular"
         android:textStyle="bold"
         android:gravity="center"/>

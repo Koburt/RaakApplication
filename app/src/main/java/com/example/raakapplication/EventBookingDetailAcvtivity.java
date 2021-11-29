@@ -3,11 +3,11 @@ package com.example.raakapplication;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -18,79 +18,82 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class BookingDetailActivity extends AppCompatActivity {
+public class EventBookingDetailAcvtivity extends AppCompatActivity {
 
-    Button booking;
-    EditText fName, lName, pNumber, seats;
-    TimePicker timePicker;
-    String date = "2021-01-01";
+    Button book;
+    String date;
+
+    EditText email, fName, lName, pNumber, seats;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_booking_detail);
+        setContentView(R.layout.activity_event_booking_detail_acvtivity);
 
-        Bundle bundle = getIntent().getExtras();
-        if(bundle != null){
-            date = bundle.getString("Date");
-        }
+        Intent intent = getIntent();
+        date = intent.getStringExtra("date");
 
-        booking = findViewById(R.id.booking);
+        book = findViewById(R.id.booking);
 
-        timePicker = findViewById(R.id.timePicker);
-
+        email = findViewById(R.id.email);
         fName = findViewById(R.id.userName);
         lName = findViewById(R.id.userSurname);
         pNumber = findViewById(R.id.userContact);
         seats = findViewById(R.id.userNumSeats);
 
-        booking.setOnClickListener(new View.OnClickListener() {
+        setDetails();
+
+        book.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                createBooking(fName.getText().toString(),pNumber.getText().toString(),
-                        timePicker.getCurrentHour().toString()+":"+timePicker.getCurrentMinute().toString(),
+                createBooking(fName.getText().toString(),lName.getText().toString(),
+                        email.getText().toString(),pNumber.getText().toString(),
                         seats.getText().toString(),date);
             }
         });
 
     }
 
-    private void createBooking(String fName, String pNumber, String time, String seats, String date){
+    public void setDetails(){
+        book.setText("Book for "+date);
+    }
+
+    private void createBooking(String fName, String lName, String email, String pNumber, String seats, String date){
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
-        databaseReference.child("reservations")
+        databaseReference.child("Bookings")
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if(snapshot.hasChild(date)){
                             if(snapshot.child(date).hasChild(pNumber)) {
-                                Toast.makeText(BookingDetailActivity.this, "Booking Already exists", Toast.LENGTH_LONG).show();
+                                Toast.makeText(EventBookingDetailAcvtivity.this, "Booking Already exists", Toast.LENGTH_LONG).show();
                             }else{
-                                Reservation booking = new Reservation(pNumber,fName, time, seats);
-                                FirebaseDatabase.getInstance().getReference().child("reservations")
+                                Booking booking = new Booking(fName, lName, email, seats);
+                                FirebaseDatabase.getInstance().getReference().child("Bookings")
                                         .child(date).child(pNumber).setValue(booking).
                                         addOnCompleteListener(new OnCompleteListener<Void>() {
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {
                                                 if (task.isSuccessful()) {
-                                                    Toast.makeText(BookingDetailActivity.this, "Booking Successful", Toast.LENGTH_LONG).show();
+                                                    Toast.makeText(EventBookingDetailAcvtivity.this, "Booking Successful", Toast.LENGTH_LONG).show();
                                                 } else {
-                                                    Toast.makeText(BookingDetailActivity.this, "Booking Failed", Toast.LENGTH_LONG).show();
+                                                    Toast.makeText(EventBookingDetailAcvtivity.this, "Booking Failed", Toast.LENGTH_LONG).show();
                                                 }
                                             }
                                         });
                             }
                         }else{
-                            Booking booking = new Booking(pNumber,fName, time, seats);
-                            FirebaseDatabase.getInstance().getReference().child("reservations")
+                            Booking booking = new Booking(fName, lName, email, seats);
+                            FirebaseDatabase.getInstance().getReference().child("Bookings")
                                     .child(date).child(pNumber).setValue(booking).
                                     addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
                                             if (task.isSuccessful()) {
-                                                Toast.makeText(BookingDetailActivity.this, "Booking Successful", Toast.LENGTH_LONG).show();
+                                                Toast.makeText(EventBookingDetailAcvtivity.this, "Booking Successful", Toast.LENGTH_LONG).show();
                                             } else {
-                                                Toast.makeText(BookingDetailActivity.this, "Booking Failed", Toast.LENGTH_LONG).show();
+                                                Toast.makeText(EventBookingDetailAcvtivity.this, "Booking Failed", Toast.LENGTH_LONG).show();
                                             }
                                         }
                                     });
@@ -99,7 +102,7 @@ public class BookingDetailActivity extends AppCompatActivity {
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(BookingDetailActivity.this, "Connection Error", Toast.LENGTH_LONG).show();
+                        Toast.makeText(EventBookingDetailAcvtivity.this, "Connection Error", Toast.LENGTH_LONG).show();
                     }
                 });
 

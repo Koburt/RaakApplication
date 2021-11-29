@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RaakApplication">
-        <activity android:name=".BookingDetailActivity"></activity>
+        <activity
+            android:name=".EventBookingDetailAcvtivity"
+            android:exported="true" />
+        <activity android:name=".BookingDetailActivity" />
         <activity android:name=".EventsActivity" />
         <activity android:name=".BookingActivity" />
         <activity android:name=".HomeActivity" /> <!-- android:theme="@style/splashScreenTheme"> -->

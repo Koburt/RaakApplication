@@ -18,6 +18,15 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.054" />
 
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHeight_percent=".78"
+    app:layout_constraintStart_toStartOf="parent"
+    android:orientation="vertical">
+
     <LinearLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
@@ -54,20 +63,6 @@
             android:textColor="@color/purple_700"
             android:paddingStart="5dp" />
 
-        <EditText
-            android:id="@+id/userSurname"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/surname"
-            android:elevation="5dp"
-            android:drawableStart="@drawable/ic_baseline_person_24"
-            android:drawableTint="@color/purple_700"
-            android:drawablePadding="5dp"
-            android:fontFamily="@font/righteous_regular"
-            android:layout_margin="14dp"
-            android:background="@drawable/text_case"
-            android:textColor="@color/purple_700"
-            android:paddingStart="5dp"/>
 
         <EditText
             android:id="@+id/userContact"
@@ -103,8 +98,8 @@
             android:textColor="@color/purple_700"
             android:paddingStart="5dp"/>
 
-        <androidx.appcompat.widget.SwitchCompat
-            android:id="@+id/userType"
+        <TimePicker
+            android:id="@+id/timePicker"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:thumb="@drawable/thumb"
@@ -120,14 +115,13 @@
             android:paddingStart="5dp"
             tools:ignore="UseSwitchCompatOrMaterialXml"
             app:showText="true"
-            android:textOn="Cus"
-            android:textOff="Per"/>
+            android:timePickerMode="spinner"/>
 
         <Button
             android:id="@+id/booking"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/book_a_date"
+            android:text="Book"
             android:layout_marginStart="55sp"
             android:layout_marginEnd="55sp"
             android:layout_marginTop="25dp"
@@ -135,4 +129,7 @@
 
 
     </LinearLayout>
+
+</ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

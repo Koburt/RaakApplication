@@ -28,13 +28,11 @@
         app:layout_constraintHeight_percent=".78"
         app:layout_constraintStart_toStartOf="parent">
 
-        <TextView
-            android:id="@+id/events"
+        <androidx.recyclerview.widget.RecyclerView
+            android:paddingTop="30dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Events Details Displayed HERE"
-            android:textColor="@color/teal_700"
-            android:textSize="20dp"
+            android:id="@+id/recyclerviewEvents"
             android:fontFamily="@font/righteous_regular"
             android:textStyle="bold"
             android:gravity="center"/>
