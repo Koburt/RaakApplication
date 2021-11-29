@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "727437456863",
+    "firebase_url": "https://raak-c10df-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "raak-c10df",
+    "storage_bucket": "raak-c10df.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:727437456863:android:cab9fd392603db2e81006a",
+        "android_client_info": {
+          "package_name": "com.example.raakapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "727437456863-g8b1hm16h7shsbm8tm5aciimg2aet29r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcX0ZKLAr1b6QLr87fa4gGX4UVsBm7b38"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "727437456863-g8b1hm16h7shsbm8tm5aciimg2aet29r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
