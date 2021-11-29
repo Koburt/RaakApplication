@@ -23,7 +23,7 @@ public class BookingDetailActivity extends AppCompatActivity {
     Button booking;
     EditText fName, lName, pNumber, seats;
     TimePicker timePicker;
-    String date = "2021-01-01";
+    String date, dateNice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +33,7 @@ public class BookingDetailActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         if(bundle != null){
             date = bundle.getString("Date");
+            dateNice = bundle.getString("DateNice");
         }
 
         booking = findViewById(R.id.booking);
@@ -43,6 +44,8 @@ public class BookingDetailActivity extends AppCompatActivity {
         lName = findViewById(R.id.userSurname);
         pNumber = findViewById(R.id.userContact);
         seats = findViewById(R.id.userNumSeats);
+
+        booking.setText("Book for "+dateNice);
 
         booking.setOnClickListener(new View.OnClickListener() {
             @Override

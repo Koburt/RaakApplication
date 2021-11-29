@@ -18,6 +18,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class EventBookingDetailAcvtivity extends AppCompatActivity {
 
     Button book;
@@ -33,6 +37,8 @@ public class EventBookingDetailAcvtivity extends AppCompatActivity {
         Intent intent = getIntent();
         date = intent.getStringExtra("date");
 
+
+
         book = findViewById(R.id.booking);
 
         email = findViewById(R.id.email);
@@ -42,7 +48,6 @@ public class EventBookingDetailAcvtivity extends AppCompatActivity {
         seats = findViewById(R.id.userNumSeats);
 
         setDetails();
-
         book.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,6 +60,16 @@ public class EventBookingDetailAcvtivity extends AppCompatActivity {
     }
 
     public void setDetails(){
+
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat simpleDateFormatText = new SimpleDateFormat("dd MMMM");
+        try{
+            Date date1 = format.parse(date);
+            date = simpleDateFormatText.format(date1);
+        }catch (Exception e){
+
+        }
+
         book.setText("Book for "+date);
     }
 

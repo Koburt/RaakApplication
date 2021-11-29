@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -23,6 +24,8 @@ public class BookingActivity extends AppCompatActivity {
     Button buttonBooking;
     CalendarView calendarView;
 
+    TextView date;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +34,13 @@ public class BookingActivity extends AppCompatActivity {
         nav();
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat simpleDateFormatText = new SimpleDateFormat("dd MMMM");
 
         calendarView = findViewById(R.id.calendarView);
         buttonBooking = findViewById(R.id.bookDate);
+
+        date = findViewById(R.id.display_date);
+        date.setText(simpleDateFormatText.format(new Date(calendarView.getDate())));
 
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
@@ -41,13 +48,16 @@ public class BookingActivity extends AppCompatActivity {
                 Calendar calendar = Calendar.getInstance();
                 calendar.set(year,month, dayOfMonth);
 
+
                 calendarView.setDate(calendar.getTimeInMillis());
+                date.setText(simpleDateFormatText.format(new Date(calendarView.getDate())));
             }
         });
 
         buttonBooking.setOnClickListener(v -> {
             Intent moveOn = new Intent(BookingActivity.this,BookingDetailActivity.class);
             moveOn.putExtra("Date",simpleDateFormat.format(new Date(calendarView.getDate())));
+            moveOn.putExtra("DateNice",simpleDateFormatText.format(new Date(calendarView.getDate())));
             startActivity(moveOn);
         });
     }
