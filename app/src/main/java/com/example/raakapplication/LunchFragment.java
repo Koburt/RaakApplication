@@ -30,7 +30,7 @@ public class LunchFragment extends Fragment {
         recyclerViewLunch.setAdapter(null);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         recyclerViewLunch.setLayoutManager(linearLayoutManager);
-        lunchAdaptor lunchAdaptor = new lunchAdaptor(lunch);
+        lunchAdaptor lunchAdaptor = new lunchAdaptor(lunch,getContext());
         recyclerViewLunch.setAdapter(lunchAdaptor);
 
         return root;

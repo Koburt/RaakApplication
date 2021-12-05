@@ -50,7 +50,7 @@ public class BookingDetailActivity extends AppCompatActivity {
         booking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                createBooking(fName.getText().toString(),pNumber.getText().toString(),
+                createBooking(pNumber.getText().toString(),fName.getText().toString(),
                         timePicker.getCurrentHour().toString()+":"+timePicker.getCurrentMinute().toString(),
                         seats.getText().toString(),date);
             }
@@ -58,7 +58,7 @@ public class BookingDetailActivity extends AppCompatActivity {
 
     }
 
-    private void createBooking(String fName, String pNumber, String time, String seats, String date){
+    private void createBooking(String pNumber, String fName,  String time, String seats, String date){
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
         databaseReference.child("reservations")
@@ -69,7 +69,7 @@ public class BookingDetailActivity extends AppCompatActivity {
                             if(snapshot.child(date).hasChild(pNumber)) {
                                 Toast.makeText(BookingDetailActivity.this, "Booking Already exists", Toast.LENGTH_LONG).show();
                             }else{
-                                Reservation booking = new Reservation(pNumber,fName, time, seats);
+                                Reservation booking = new Reservation(fName, pNumber, time, seats);
                                 FirebaseDatabase.getInstance().getReference().child("reservations")
                                         .child(date).child(pNumber).setValue(booking).
                                         addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -84,7 +84,7 @@ public class BookingDetailActivity extends AppCompatActivity {
                                         });
                             }
                         }else{
-                            Booking booking = new Booking(pNumber,fName, time, seats);
+                            Reservation booking = new Reservation(fName, pNumber, time, seats);
                             FirebaseDatabase.getInstance().getReference().child("reservations")
                                     .child(date).child(pNumber).setValue(booking).
                                     addOnCompleteListener(new OnCompleteListener<Void>() {

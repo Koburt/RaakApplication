@@ -29,7 +29,7 @@ public class BreakfastFragment extends Fragment {
         recyclerViewBreakfast.setAdapter(null);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         recyclerViewBreakfast.setLayoutManager(linearLayoutManager);
-        breakfastAdaptor breakfastAdaptor = new breakfastAdaptor(breakfast);
+        breakfastAdaptor breakfastAdaptor = new breakfastAdaptor(breakfast,getContext());
         recyclerViewBreakfast.setAdapter(breakfastAdaptor);
 
         return root;

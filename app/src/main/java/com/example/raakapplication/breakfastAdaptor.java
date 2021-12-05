@@ -1,21 +1,28 @@
 package com.example.raakapplication;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
 
 public class breakfastAdaptor extends RecyclerView.Adapter<breakfastAdaptor.ViewHolder>{
 
     ArrayList<MenuItem> breakfast;
+    public Context context;
 
-    public breakfastAdaptor(ArrayList<MenuItem> breakfast) {
+    public breakfastAdaptor(ArrayList<MenuItem> breakfast,Context context) {
         this.breakfast = breakfast;
+        this.context = context;
     }
 
     @NonNull
@@ -29,8 +36,10 @@ public class breakfastAdaptor extends RecyclerView.Adapter<breakfastAdaptor.View
     @Override
     public void onBindViewHolder(@NonNull breakfastAdaptor.ViewHolder holder, int position) {
         breakfastAdaptor.ViewHolder myViewHolder = holder;
-        myViewHolder.Item.setText(breakfast.get(position).Description);
+        myViewHolder.Item.setText(breakfast.get(position).Name);
+        myViewHolder.Description.setText(breakfast.get(position).Description);
         myViewHolder.Price.setText("R"+breakfast.get(position).Price);
+        Glide.with(context).load(breakfast.get(position).ImagePath).apply(new RequestOptions().override(300,300)).into(myViewHolder.imageView);
     }
 
     @Override
@@ -39,10 +48,13 @@ public class breakfastAdaptor extends RecyclerView.Adapter<breakfastAdaptor.View
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView Item, Price;
+        TextView Item, Price, Description;
+        ImageView imageView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            imageView = itemView.findViewById(R.id.image2);
+            Description = itemView.findViewById(R.id.textViewDescription);
             Item = itemView.findViewById(R.id.textViewTitle);
             Price = itemView.findViewById(R.id.textViewAddress);
 

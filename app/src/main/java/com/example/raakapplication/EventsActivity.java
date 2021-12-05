@@ -65,7 +65,7 @@ public class EventsActivity extends AppCompatActivity implements eventsAdaptor.O
         recyclerViewEvents.setAdapter(null);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerViewEvents.setLayoutManager(linearLayoutManager);
-        eventsAdaptor eventsAdaptor = new eventsAdaptor(events);
+        eventsAdaptor eventsAdaptor = new eventsAdaptor(events, getApplicationContext());
         eventsAdaptor.setOnItemClickListener(this::onItemClicked);
         recyclerViewEvents.setAdapter(eventsAdaptor);
     }

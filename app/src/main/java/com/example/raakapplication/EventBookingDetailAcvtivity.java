@@ -25,7 +25,7 @@ import java.util.Date;
 public class EventBookingDetailAcvtivity extends AppCompatActivity {
 
     Button book;
-    String date;
+    String date, date2;
 
     EditText email, fName, lName, pNumber, seats;
 
@@ -65,12 +65,12 @@ public class EventBookingDetailAcvtivity extends AppCompatActivity {
         SimpleDateFormat simpleDateFormatText = new SimpleDateFormat("dd MMMM");
         try{
             Date date1 = format.parse(date);
-            date = simpleDateFormatText.format(date1);
+            date2 = simpleDateFormatText.format(date1);
         }catch (Exception e){
 
         }
 
-        book.setText("Book for "+date);
+        book.setText("Book for "+date2);
     }
 
     private void createBooking(String fName, String lName, String email, String pNumber, String seats, String date){
