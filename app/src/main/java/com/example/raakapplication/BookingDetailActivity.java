@@ -50,12 +50,49 @@ public class BookingDetailActivity extends AppCompatActivity {
         booking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                createBooking(pNumber.getText().toString(),fName.getText().toString(),
-                        timePicker.getCurrentHour().toString()+":"+timePicker.getCurrentMinute().toString(),
-                        seats.getText().toString(),date);
+                if(checkDetails()) {
+                    createBooking(pNumber.getText().toString(), fName.getText().toString(),
+                            timePicker.getCurrentHour().toString() + ":" + timePicker.getCurrentMinute().toString(),
+                            seats.getText().toString(), date);
+                }else{
+                    Toast.makeText(BookingDetailActivity.this, "Please check your details are correct", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
+    }
+
+    private boolean checkDetails(){
+        if(checkName() && checkNumber() && checkCheckSeats() && checkTime()){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    private boolean checkName(){
+        if(!fName.getText().toString().equals("") && fName.getText().toString().matches("^[a-zA-Z]*$")){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    private boolean checkNumber(){
+        if(!pNumber.getText().toString().equals("") && pNumber.getText().toString().matches("^\\d{9}$")){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    private boolean checkCheckSeats(){
+        if(!seats.getText().toString().equals("") && seats.getText().toString().matches("[0-9]+") && seats.getText().toString().length() <3){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    private boolean checkTime(){
+        return true;
     }
 
     private void createBooking(String pNumber, String fName,  String time, String seats, String date){

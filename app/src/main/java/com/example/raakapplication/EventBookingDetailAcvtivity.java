@@ -59,6 +59,54 @@ public class EventBookingDetailAcvtivity extends AppCompatActivity {
 
     }
 
+    private boolean checkDetails(){
+        if(checkName() && checkNumber() && checkCheckSeats() && checkLName() && checkEmail()){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    private boolean checkName(){
+        if(!fName.getText().toString().equals("") && fName.getText().toString().matches("^[a-zA-Z]*$")){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    private boolean checkLName(){
+        if(!lName.getText().toString().equals("") && lName.getText().toString().matches("^[a-zA-Z]*$")){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    private boolean checkNumber(){
+        if(!pNumber.getText().toString().equals("") && pNumber.getText().toString().matches("^\\d{9}$")){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    private boolean checkEmail(){
+        if(!email.getText().toString().equals("") && fName.getText().toString().matches("[a-zA-Z0-9._-]+@[a-z]+\\\\.+[a-z]+")){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    private boolean checkCheckSeats(){
+        if(!seats.getText().toString().equals("") && seats.getText().toString().matches("[0-9]+") && seats.getText().toString().length() <3){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     public void setDetails(){
 
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
